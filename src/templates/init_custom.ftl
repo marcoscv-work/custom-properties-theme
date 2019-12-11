@@ -1,0 +1,1 @@
+<#assign custom_variables = getterUtil.getString(themeDisplay.getThemeSetting("custom-variables"))/>
