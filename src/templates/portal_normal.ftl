@@ -11,11 +11,29 @@
 
 	<@liferay_util["include"] page=top_head_include />
 
+    <#--  If ie11CustomProperties is selected  -->
+    <#if custom_variables_polyfill == "ie11CustomProperties">
+        <script>window.MSInputMethodContext && document.documentMode && document.write('<script src="https://cdn.jsdelivr.net/npm/ie11-custom-properties@2.6.0/ie11CustomProperties.js"><\script>');</script>
+    </#if>
 </head>
 
 <body class="${css_class}">
 
-<script src="https://unpkg.com/css-vars-ponyfill@2/dist/css-vars-ponyfill.min.js"></script>
+<#--  Custom variables and button examples  -->
+<style>
+    ${custom_variables}
+</style>
+
+<#--  If ponyfill is selected  -->
+<#if custom_variables_polyfill == "css-vars-ponyfill">
+    <script src="https://unpkg.com/css-vars-ponyfill@2/dist/css-vars-ponyfill.min.js"></script>
+
+    <script>
+        cssVars({
+            include: 'style'
+        });
+    </script>
+</#if>
 
 <@liferay_ui["quick-access"] contentId="#main-content" />
 
@@ -26,7 +44,8 @@
 <div class="container" id="wrapper">
 	<header id="banner" role="banner">
 		<div id="heading">
-			${site_name}
+            <h1>Polyfill selected: ${custom_variables_polyfill}</h1>
+			<h2>Site name: ${site_name}
 		</div>
 
 		<#if !is_signed_in>
@@ -39,11 +58,6 @@
 	</header>
 
 	<section id="content">
-        <#--  Custom variables and button examples  -->
-        <style>
-            ${custom_variables}
-        </style>
-
         <button class="btn btn-blue">btn blue</button>
         <button class="btn btn-red">btn red</button>
 

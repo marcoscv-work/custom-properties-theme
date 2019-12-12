@@ -1,1 +1,2 @@
 <#assign custom_variables = getterUtil.getString(themeDisplay.getThemeSetting("custom-variables"))/>
+<#assign custom_variables_polyfill = getterUtil.getString(themeDisplay.getThemeSetting("custom-variables-polyfill"))/>
