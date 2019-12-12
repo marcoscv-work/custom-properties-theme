@@ -10,11 +10,6 @@
 	<meta content="initial-scale=1.0, width=device-width" name="viewport" />
 
 	<@liferay_util["include"] page=top_head_include />
-
-    <#--  If ie11CustomProperties is selected  -->
-    <#if custom_variables_polyfill == "ie11CustomProperties">
-        <script>window.MSInputMethodContext && document.documentMode && document.write('<script src="https://cdn.jsdelivr.net/npm/ie11-custom-properties@2.6.0/ie11CustomProperties.js"><\script>');</script>
-    </#if>
 </head>
 
 <body class="${css_class}">
@@ -24,15 +19,14 @@
     ${custom_variables}
 </style>
 
+<#--  If ie11CustomProperties is selected  -->
+<#if custom_variables_polyfill == "ie11CustomProperties">
+    <script>window.MSInputMethodContext && document.documentMode && document.write('<script src="https://cdn.jsdelivr.net/npm/ie11-custom-properties@2.6.0/ie11CustomProperties.js"><\script>');</script>
+</#if>
+
 <#--  If ponyfill is selected  -->
 <#if custom_variables_polyfill == "css-vars-ponyfill">
     <script src="https://unpkg.com/css-vars-ponyfill@2/dist/css-vars-ponyfill.min.js"></script>
-
-    <script>
-        cssVars({
-            include: 'style'
-        });
-    </script>
 </#if>
 
 <@liferay_ui["quick-access"] contentId="#main-content" />
@@ -81,6 +75,14 @@
 
 <!-- inject:js -->
 <!-- endinject -->
+
+<#if custom_variables_polyfill == "css-vars-ponyfill">
+    <script>
+        cssVars({
+            include: 'style'
+        });
+    </script>
+</#if>
 
 </body>
 

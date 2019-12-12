@@ -9,7 +9,7 @@
 		<template-extension>ftl</template-extension>
 		<settings>
 			<setting configurable="true" key="custom-variables" type="textarea" value=":root {--blue: blue; --red: red;}" />
-			<setting configurable="true" key="custom-variables-polyfill" options="css-vars-ponyfill,ie11CustomProperties" type="select" />
+			<setting configurable="true" key="custom-variables-polyfill" options="css-vars-ponyfill,ie11CustomProperties,none" type="select" />
 		</settings>
 		<portlet-decorator id="barebone" name="Barebone">
 			<portlet-decorator-css-class>portlet-barebone</portlet-decorator-css-class>
